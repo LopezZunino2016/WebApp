@@ -29,13 +29,19 @@
 				<li class="nav-item"><a class="nav-link" href="#tablas">Tablas</a></li>
 				<li class="nav-item"><a class="nav-link" href="#componentes">Componentes</a></li>
 			</ul>
-			<form action="" class="form-inline my-2 my-lg-0">
-				<div class="form-group">
-					<input type="text" class="form-control" placeholder="...">
-				</div>
-				<button type="submit"
-					class="btn btn-outline-success ml-2 my-2 my-sm-0">Buscar</button>
-			</form>
+			<div class="col-sm-4">
+				<form role="form" method="POST" action="principal.html">
+					<div class="form-group">
+						<input type="text"	class="form-control" id="usuario" 
+							placeholder="Usuario" autofocus> 
+					
+						<input type="password"
+							class="form-control" id="password" placeholder="Password">
+						<button type="submit" class="btn btn-primary">
+						<i class="fa fa-sign-in"></i> Enviar</button>
+					</div>
+				</form>
+			</div>
 		</div>
 	</nav>
 	<br>
