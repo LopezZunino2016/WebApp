@@ -59,7 +59,7 @@ CREATE TABLE `productos` (
   `codigo` int(11) NOT NULL,
   `imagen` longblob,
   `Precio` double NOT NULL,
-  `idTipoProducto` int(11) DEFAULT NULL,
+  `idTipoProducto` int(11) NOT NULL,
   `descripcion` varchar(45) NOT NULL,
   PRIMARY KEY (`idProductos`),
   KEY `fk_tipos_idx` (`idTipoProducto`),
@@ -109,11 +109,13 @@ DROP TABLE IF EXISTS `usuarios`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `usuarios` (
   `idUsuarios` int(11) NOT NULL,
-  `nombre` varchar(45) DEFAULT NULL,
-  `apellidos` varchar(45) DEFAULT NULL,
-  `telefono` varchar(45) DEFAULT NULL,
-  `email` varchar(45) DEFAULT NULL,
-  `tipo` int(11) DEFAULT NULL,
+  `nombre` varchar(45) NOT NULL,
+  `apellidos` varchar(45) NOT NULL,
+  `telefono` varchar(45) NOT NULL,
+  `email` varchar(45) NOT NULL,
+  `tipo` int(11) NOT NULL,
+  `usuarios` varchar(45) NOT NULL,
+  `password` varchar(45) NOT NULL,
   PRIMARY KEY (`idUsuarios`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -136,4 +138,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-01-18 10:09:34
+-- Dump completed on 2018-01-18 10:47:28
