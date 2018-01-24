@@ -9,13 +9,14 @@
 	<link rel="stylesheet" href="../css/bootstrap.min.css">
 
 	<!-- Stylesheets -->
+		<link href="../css/estilo.css" rel="stylesheet" type="text/css"/>
+	
 	<link rel="stylesheet" href="../fonts/font-awesome.min.css">
-	<link href="css/estilo.css" rel="stylesheet" type="text/css"/>
 
 </head>
 <body>
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-		<a class="navbar-brand" href="#">Mi Web</a>
+		<a class="navbar-brand" href="../index.jsp">Mi Web</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarExample" aria-controls="navbarExample"
 			aria-expanded="false" aria-label="Toggle navigation">
@@ -25,7 +26,7 @@
 		<div class="collapse navbar-collapse" id="navbarExample">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item active"><a class="nav-link"
-					href="/index.jsp">Inicio</a></li>
+					href="../index.jsp">Inicio</a></li>
 				<li class="nav-item"><a class="nav-link" href="#articulos">Artículos</a></li>
 				<li class="nav-item"><a class="nav-link" href="#tablas">Tablas</a></li>
 				<li class="nav-item"><a class="nav-link" href="#componentes">Componentes</a></li>
@@ -51,20 +52,7 @@
 				%>
 				<hr>
 				<form action="../RegistrarUsuario" class="form-horizontal" method="post">
-					<div class="form-group">
-						<label class="col-md-6 control-label" for="login">Login</label>
-						<div class="col-md-6">
-							<input type="text" id="login" name="login" placeholder="Login"
-								class="form-control input-md" required>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-md-6 control-label" for="password">Password</label>
-						<div class="col-md-6">
-							<input type="password" id="password" name="password" placeholder="Password"
-								class="form-control input-md" required>
-						</div>
-					</div>
+				
 					<div class="form-group">
 						<label class="col-md-6 control-label" for="nombre">Nombre</label>
 						<div class="col-md-6">
@@ -72,6 +60,24 @@
 								class="form-control input-md" required>
 						</div>
 					</div>
+					
+					<div class="form-group">
+						<label class="col-md-6 control-label" for="apellido">Apellido</label>
+						<div class="col-md-6">
+							<input type="text" id="apellido" name="apellido" placeholder="Apellido"
+								class="form-control input-md" required>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label class="col-md-6 control-label" for="telefono">Telefono</label>
+						<div class="col-md-6">
+							<input type="telefono" id="telefono" name="telefono" placeholder="Telefono"
+								class="form-control input-md" required>
+						</div>
+					</div>
+					
+					
 					<div class="form-group">
 						<label class="col-md-6 control-label" for="email">Email</label>
 						<div class="col-md-6">
@@ -79,6 +85,25 @@
 								class="form-control input-md" required>
 						</div>
 					</div>
+					
+					<div class="form-group">
+						<label class="col-md-6 control-label" for="login">Login</label>
+						<div class="col-md-6">
+							<input type="text" id="login" name="login" placeholder="Login"
+								class="form-control input-md" required>
+						</div>
+					</div>
+					
+					
+					<div class="form-group">
+						<label class="col-md-6 control-label" for="password">Password</label>
+						<div class="col-md-6">
+							<input type="password" id="password" name="password" placeholder="Password"
+								class="form-control input-md" required>
+						</div>
+					</div>
+					
+					
 					<div class="form-group">
 						<div class="col-md-6">
 							<input type="submit" value="Enviar"

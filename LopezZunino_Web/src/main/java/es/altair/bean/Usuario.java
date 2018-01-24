@@ -13,113 +13,98 @@ public class Usuario implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idUsuario; 
+	private int idUsuarios; 
 	private String nombre; 
-	private String apellidos; 
-	private String usuario; 
-	private String password; 
+	private String apellido; 
 	private String telefono; 
 	private String email; 
-	private int tipo;
-	
+	private int tipo; 
+	private String login; 
+	private String password;
 	
 	public Usuario() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-
-	public Usuario(String nombre, String apellidos, String usuario, String password, String telefono, String email,
-			int tipo) {
+	public Usuario(String nombre, String apellido, String telefono, String email, int tipo, String login,
+			String password) {
 		super();
 		this.nombre = nombre;
-		this.apellidos = apellidos;
-		this.usuario = usuario;
-		this.password = password;
+		this.apellido = apellido;
 		this.telefono = telefono;
 		this.email = email;
 		this.tipo = tipo;
+		this.login = login;
+		this.password = password;
 	}
 
-
-	public int getIdUsuario() {
-		return idUsuario;
+	public int getIdUsuarios() {
+		return idUsuarios;
 	}
 
-
-	public void setIdUsuario(int idUsuario) {
-		this.idUsuario = idUsuario;
+	public void setIdUsuarios(int idUsuarios) {
+		this.idUsuarios = idUsuarios;
 	}
-
 
 	public String getNombre() {
 		return nombre;
 	}
 
-
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
-
-	public String getApellidos() {
-		return apellidos;
+	public String getApellido() {
+		return apellido;
 	}
 
-
-	public void setApellidos(String apellidos) {
-		this.apellidos = apellidos;
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
 	}
-
-
-	public String getUsuario() {
-		return usuario;
-	}
-
-
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
-	}
-
-
-	public String getPassword() {
-		return password;
-	}
-
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
 
 	public String getTelefono() {
 		return telefono;
 	}
 
-
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
-
 
 	public String getEmail() {
 		return email;
 	}
 
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
 
 	public int getTipo() {
 		return tipo;
 	}
 
-
 	public void setTipo(int tipo) {
 		this.tipo = tipo;
 	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	
+	
 
 
 	
