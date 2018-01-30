@@ -12,5 +12,6 @@
         <property name="hibernate.show_sql">true</property>
         
         <mapping class="es.altair.bean.Usuario"/>
+        <mapping class="es.altair.bean.Articulo"/>
     </session-factory>
 </hibernate-configuration>

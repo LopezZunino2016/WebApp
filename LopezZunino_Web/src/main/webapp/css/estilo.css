@@ -1,10 +1,15 @@
 @charset "ISO-8859-1";
 
 body{
-    background:#8ba987 url('https://images5.alphacoders.com/380/thumb-1920-380568.jpg') no-repeat center center;
-    font-family: 'Indie Flower', cursive;
+    font-family:arial;
 	color: #CCC;
+background:#8ba987 url('http://i.imgur.com/7Prf6.jpg');	
 }
 form{
 	color: yellow; 
+}
+#seccion {
+	float: left;
+	width: 660px;
+	margin: 20px !important ;
 }

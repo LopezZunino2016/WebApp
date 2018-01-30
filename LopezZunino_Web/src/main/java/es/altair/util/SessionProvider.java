@@ -20,7 +20,8 @@ public class SessionProvider {
 				.setProperty("hibernate.connection.username", "root")
 				.setProperty("hibernate.connection.password", "root")
 				.setProperty("hibernate.show_sql", "true")
-				.addAnnotatedClass(es.altair.bean.Usuario.class);
+				.addAnnotatedClass(es.altair.bean.Usuario.class)
+				.addAnnotatedClass(es.altair.bean.Articulo.class);
 	}
 	
 	public static Session getSession() {

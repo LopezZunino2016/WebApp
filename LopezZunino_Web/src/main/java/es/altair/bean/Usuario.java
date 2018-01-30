@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 @Entity
-@Table(name="usuario")
+@Table(name="usuarios")
 public class Usuario implements Serializable{
 
 	@Id
@@ -101,6 +101,13 @@ public class Usuario implements Serializable{
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	@Override
+	public String toString() {
+		return "Usuario [idUsuarios=" + idUsuarios + ", nombre=" + nombre + ", apellido=" + apellido + ", telefono="
+				+ telefono + ", email=" + email + ", tipo=" + tipo + ", login=" + login + ", password=" + password
+				+ "]";
 	}
 	
 	

@@ -42,16 +42,38 @@ public class RegistrarUsuario extends HttpServlet {
 		String apellido = request.getParameter("apellido");
 		String telefono = request.getParameter("telefono");
 		String email = request.getParameter("email");
-		int tipo  = 0;
+		int tipo  = 1;
 		String login = request.getParameter("login");
 		String password = request.getParameter("password");
 		
 		Usuario usu = new Usuario(nombre, apellido, telefono, email, tipo, login, password);
 		
 		UsuarioDAO uDAO = new UsuarioDAOImplHibernate(); 
-		uDAO.insertar(usu); 
 		
-		response.sendRedirect("index.jsp");
+		String msg = "";
+		int filas = 0;
+		
+		if(uDAO.validarlogin(usu)) {
+				filas = uDAO.insertar(usu);
+								
+				if( filas == 1) {
+					msg= "Usuario Registrado Correstamente";
+					response.sendRedirect("index.jsp?mensaje="+msg);
+
+				}else {
+					msg= "No se ha podido añadir al usuario";
+					response.sendRedirect("index.jsp?mensaje="+msg);
+
+				}
+			}else {
+				msg= "El usuario ya existe, introduzca uno nuevo";
+				response.sendRedirect("jsp/registrar.jsp?mensaje="+msg);
+			}
+			
+		}
+		
+		
+		
 	}
 
-}
+

@@ -33,6 +33,9 @@
 			</ul>
 		</div>
 	</nav>
+	<br>
+	<br>
+	<br>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
@@ -72,7 +75,7 @@
 					<div class="form-group">
 						<label class="col-md-6 control-label" for="telefono">Telefono</label>
 						<div class="col-md-6">
-							<input type="telefono" id="telefono" name="telefono" placeholder="Telefono"
+							<input type="number" id="telefono" name="telefono" placeholder="Telefono"
 								class="form-control input-md" required>
 						</div>
 					</div>
