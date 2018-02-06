@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.UUID;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
@@ -16,18 +17,20 @@ import javax.servlet.http.Part;
 
 import es.altair.dao.ArticuloDAO;
 import es.altair.dao.ArticuloDAOImplHibernate;
+import es.altair.bean.Articulo;
+
 
 /**
- * Servlet implementation class EditarArticulo
+ * Servlet implementation class AnadirArticulo
  */
 @MultipartConfig
-public class EditarArticulo extends HttpServlet {
+public class AnadirArticulo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EditarArticulo() {
+    public AnadirArticulo() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,7 +38,7 @@ public class EditarArticulo extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
@@ -44,7 +47,7 @@ public class EditarArticulo extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("Entro en doPost");
-		String codigo = request.getParameter("codigo");
+		String codigo = UUID.randomUUID().toString();
 		String nombre = request.getParameter("nombre");
 		String descripcion = request.getParameter("descripcion");
 		float precio = Float.parseFloat(request.getParameter("precio"));
@@ -67,10 +70,11 @@ public class EditarArticulo extends HttpServlet {
 			ImageIO.write(buffered, "jpg", os);
 		}
 		
-		System.out.println("Voy a actualizar");
+		System.out.println("Voy a añadir");
 		ArticuloDAO aDAO = new ArticuloDAOImplHibernate();
-		aDAO.actualizar(nombre,descripcion,precio,os,codigo);
+		Articulo a = new Articulo(nombre, descripcion, os.toByteArray(), precio, codigo);
 		
+		aDAO.insertar(a);
 		response.sendRedirect("jsp/principalAdmin.jsp");
 		
 	}
@@ -81,4 +85,5 @@ public class EditarArticulo extends HttpServlet {
 		}
 		return null;
 	}
+
 }

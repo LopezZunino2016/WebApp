@@ -8,5 +8,7 @@ public interface UsuarioDAO {
 	int insertar(Usuario usu);
 	boolean validarEmail(Usuario usu);
 	boolean validarlogin(Usuario usu);
+	Usuario obtenerUsuarioPorLogin(String login);
+	void actualizar(String nombre, String apellido, String telefono, String email, int tipo, String login, String password );
 
 }

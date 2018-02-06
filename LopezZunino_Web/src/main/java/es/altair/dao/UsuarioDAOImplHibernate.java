@@ -4,6 +4,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import es.altair.bean.Articulo;
 import es.altair.bean.Usuario;
 import es.altair.util.SessionProvider;
 
@@ -112,5 +113,58 @@ public class UsuarioDAOImplHibernate implements UsuarioDAO {
 
 		return correcto;
 
+	}
+
+	public Usuario obtenerUsuarioPorLogin(String login) {
+		Usuario u = null;
+		
+		Session sesion = SessionProvider.getSession();
+		
+		try {
+			sesion.beginTransaction();
+			
+			u = (Usuario)sesion.createQuery("FROM usuario u WHERE u.login=:clave")
+					.setParameter("clave", login)
+					.uniqueResult();
+			
+			sesion.getTransaction().commit();
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally {
+			sesion.close();
+			// sf.close();
+		}
+		
+		return u;
+	}
+
+	public void actualizar(String nombre, String apellido, String telefono, String email, int tipo, String login,
+			String password) {
+		Session sesion = SessionProvider.getSession();
+		
+		try {
+			sesion.beginTransaction();
+			System.out.println("Entro en la asesion");
+			
+			sesion.createQuery("UPDATE Usuario SET nombre=:n, apellido=:a, telefono=:t, email=:e, tipo=:ti, login=:l, password=:pas")
+				.setParameter("n", nombre)
+				.setParameter("a", apellido)
+				.setParameter("t", telefono)
+				.setParameter("e", email)
+				.setParameter("ti", tipo)
+				.setParameter("l", login)
+				.setParameter("pas", password)
+				.executeUpdate();
+
+
+
+			sesion.getTransaction().commit();
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally {
+			sesion.close();
+			// sf.close();
+		}
+		
 	}
 }

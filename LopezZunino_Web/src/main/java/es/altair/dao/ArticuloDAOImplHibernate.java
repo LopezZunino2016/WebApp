@@ -75,18 +75,20 @@ public class ArticuloDAOImplHibernate implements ArticuloDAO {
 	}
 
 	public Articulo obtenerArticuloPorCodigo(String codigo) {
-		
+		System.out.println("Entro en el metodo obtener");
+
 		Articulo a = null; 
-		
+		System.out.println("Creamos la sesion");
 		Session sesion = SessionProvider.getSession();
 		
 		try {
 			sesion.beginTransaction();
-			
+			System.out.println("Entremos en el try");
 			a = (Articulo)sesion.createQuery("FROM Articulo a WHERE a.codigo=:clave")
 					.setParameter("clave", codigo)
 					.uniqueResult();
-			
+
+			System.out.println("SALIMOS" + a);
 			sesion.getTransaction().commit();
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -98,15 +100,17 @@ public class ArticuloDAOImplHibernate implements ArticuloDAO {
 	}
 
 	public void actualizar(String nombre, String descripcion, float precio, ByteArrayOutputStream os, String codigo) {
-		
+		System.out.println("Entro en el metodo Actualizar");
 		
 		Session sesion = SessionProvider.getSession();
 		
 		try {
 			sesion.beginTransaction();
-			
+			System.out.println("Entro en la asesion");
 			if(os != null) {
-				sesion.createQuery("UPDATE Articulo SET nombre=:n,  descripcion=:d, precio=.p foto=:f WHERE codigo=:clave ")
+				System.out.println("Entro en el if");
+
+				sesion.createQuery("UPDATE Articulo SET nombre=:n,  descripcion=:d, precio=:p, foto=:f WHERE codigo=:clave")
 					.setParameter("n", nombre)
 					.setParameter("d", descripcion)
 					.setParameter("p", precio)
@@ -114,7 +118,9 @@ public class ArticuloDAOImplHibernate implements ArticuloDAO {
 					.setParameter("clave", codigo)
 					.executeUpdate();
 			}else {
-				sesion.createQuery("UPDATE Articulo SET nombre=:n,  descripcion=:d, precio=.p WHERE codigo=:clave ")
+				System.out.println("Entro en el else");
+
+				sesion.createQuery("UPDATE Articulo SET nombre=:n,  descripcion=:d, precio=:p WHERE codigo=:clave ")
 				.setParameter("n", nombre)
 				.setParameter("d", descripcion)
 				.setParameter("p", precio)
@@ -127,6 +133,27 @@ public class ArticuloDAOImplHibernate implements ArticuloDAO {
 		} finally {
 			sesion.close();
 			// sf.close();
+		}
+		
+	}
+
+	public void insertar(Articulo a) {
+		
+		Session sesion = SessionProvider.getSession();
+		
+		try {
+			System.out.println("entramos en try ");
+			sesion.beginTransaction();
+			System.out.println("antes de guardar");
+
+			sesion.save(a);
+			
+			System.out.println("despues de guardar");
+			sesion.getTransaction().commit();
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally {
+			sesion.close();
 		}
 		
 	}

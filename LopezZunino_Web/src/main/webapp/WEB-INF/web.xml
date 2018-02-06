@@ -40,6 +40,30 @@
   	<description></description>
   	<servlet-class>es.altair.controller.EditarArticulo</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>AnadirArticulo</servlet-name>
+  	<display-name>AnadirArticulo</display-name>
+  	<description></description>
+  	<servlet-class>es.altair.controller.AnadirArticulo</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>EditarUsuario</servlet-name>
+  	<display-name>EditarUsuario</display-name>
+  	<description></description>
+  	<servlet-class>es.altair.controller.EditarUsuario</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>ComprarArticulo</servlet-name>
+  	<display-name>ComprarArticulo</display-name>
+  	<description></description>
+  	<servlet-class>es.altair.controller.ComprarArticulo</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>BorrarCompra</servlet-name>
+  	<display-name>BorrarCompra</display-name>
+  	<description></description>
+  	<servlet-class>es.altair.controller.BorrarCompra</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>RegistrarUsuario</servlet-name>
   	<url-pattern>/RegistrarUsuario</url-pattern>
@@ -63,5 +87,21 @@
   <servlet-mapping>
   	<servlet-name>EditarArticulo</servlet-name>
   	<url-pattern>/EditarArticulo</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AnadirArticulo</servlet-name>
+  	<url-pattern>/AnadirArticulo</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>EditarUsuario</servlet-name>
+  	<url-pattern>/EditarUsuario</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ComprarArticulo</servlet-name>
+  	<url-pattern>/ComprarArticulo</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>BorrarCompra</servlet-name>
+  	<url-pattern>/BorrarCompra</url-pattern>
   </servlet-mapping>
 </web-app>

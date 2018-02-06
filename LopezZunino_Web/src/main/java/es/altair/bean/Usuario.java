@@ -1,11 +1,14 @@
 package es.altair.bean;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 @Entity
 @Table(name="usuarios")
@@ -21,6 +24,10 @@ public class Usuario implements Serializable{
 	private int tipo; 
 	private String login; 
 	private String password;
+	
+	@OneToMany(mappedBy="usuario")
+	private Set<Compra> compras = new HashSet<Compra>();
+	
 	
 	public Usuario() {
 		super();
@@ -101,6 +108,15 @@ public class Usuario implements Serializable{
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	
+	public Set<Compra> getCompras() {
+		return compras;
+	}
+
+	public void setCompras(Set<Compra> compras) {
+		this.compras = compras;
 	}
 
 	@Override

@@ -1,25 +1,32 @@
 package es.altair.bean;
 
+import java.io.Serializable;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="articulos")
-public class Articulo {
+public class Articulo implements Serializable {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idArticulos; 
 	private String nombre; 
 	private String descripcion; 
 	private byte[] foto; 
 	private float precio; 
 	private String codigo;
+	
+	@OneToMany(mappedBy="usuario")
+	private Set<Compra> compras = new HashSet<Compra>();
 	
 	public Articulo() {
 		super();

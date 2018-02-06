@@ -1,3 +1,4 @@
+<%@page import="es.altair.bean.Usuario"%>
 <%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@page import="es.altair.bean.Articulo"%>
 <%@page import="es.altair.dao.ArticuloDAO"%>
@@ -16,6 +17,7 @@
 
 		<!-- Stylesheets -->
 	<link rel="stylesheet" href="../fonts/font-awesome.min.css">
+		<link href="../css/Prueba.css" rel="stylesheet" type="text/css"/>	
 	<link href="../css/estilo.css" rel="stylesheet" type="text/css"/>	
 	</head>
 	<body>
@@ -33,13 +35,14 @@
 					href="/index.jsp">Inicio</a></li>
 				<li class="nav-item"><a class="nav-link" href="#articulos">Artículos</a></li>
 				<li class="nav-item"><a class="nav-link" href="#tablas">Tablas</a></li>
-				
+			</ul>	
 		</div>
 	</nav>
 	<br>
 	<br>
 	<br>
-	<div class="container">
+	
+	<div>
 		<%
 			if(session.getAttribute("usuLogeado") == null || session.isNew() )
 			{
@@ -47,17 +50,45 @@
 			}else{
 				ArticuloDAO aDAO = new ArticuloDAOImplHibernate();
 				List<Articulo> listaArticulo = aDAO.listar(); 
-				
-			
 		%>
-		<div class="row col-md-6 col-md-offset-2">
-		<h2 id="articulos">Articulos</h2>
+		<div class="row"  style="float: left">
+			<div class="col-md-2 col-sm-2">
+				<div class="profile-sidebar" style="float: left">
+				<br>
+				<!-- Sidebar title -->
+				<div class="profile-user">
+					<div class="profile-name">
+						<label>Bienvenido</label> <label><%=((Usuario) session.getAttribute("usuLogeado")).getNombre()%></label>
+					</div>
+				</div>
+
+				<!-- Sidebar menu -->
+				<nav class="profile-menu">
+				<ul class="nav navbar vertical">
+					<li><a href="#"><i class="glyphicon glyphicon-user"></i>
+							Perfil</a></li>
+					<li>
+						<button type="button" class="btn btn-warning.active"
+							data-dismiss="alert" aria-hidden="true"
+							onclick="location.href='../CerrarSesion'">Cerrar Sesión</button>
+					</li>
+
+				</ul>
+				</nav>
+			</div>
+			</div>
+			
+			
+			
+		</div>
 		
-		
-			<table class="table table-striped">
+		<section style="float: right">
+			<div class="row col-md-6 col-md-offset-2" >
+			<table class="table table">
+						<h1 >Articulos</h1>
+			
 				<thead>
 					<tr>
-						<th>ID</th>
 						<th>Nombre</th>
 						<th>Descripcion</th>
 						<th>Foto</th>
@@ -66,28 +97,27 @@
 					</tr>
 				</thead>
 				<%
-					for(Articulo a : listaArticulo){
-					 
+					for (Articulo a : listaArticulo) {
 				%>
 				<tr>
-					<td><%out.print(a.getIdArticulos()); %></td>
-					<td><%=a.getNombre() %></td>
+					<td><%=a.getNombre()%></td>
 					<td><%=a.getDescripcion()%></td>
-					<td><img alt="Portada" src="image.jsp?imag=<%=a.getIdArticulos() %>" class="img-thumbnail"
-						width="50" height="50" ></td>
-					<td><%=a.getPrecio() %></td>
+					<td><img alt="Portada"
+						src="image.jsp?imag=<%=a.getIdArticulos()%>"
+						class="img-thumbnail" width="50" height="50"></td>
+					<td><%=a.getPrecio()%></td>
 					<td>
 						<button type="button" class="btn btn-default"
 							onclick="location.href='editarArticulo.jsp?codigo=<%=a.getCodigo()%>'">
 							<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 							Actualizar
 						</button> <!-- Button trigger modal -->
-						
+
 						<button type="button" class="btn btn-warning" data-toggle="modal"
 							data-target="#borrarArticulo<%=a.getIdArticulos()%>">
 							<i class="fa fa-times" aria-hidden="true"></i> Borrar
 						</button> <!-- Modal -->
-						
+
 						<div class="modal fade" id="borrarArticulo<%=a.getIdArticulos()%>"
 							tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
 							aria-hidden="true">
@@ -114,22 +144,32 @@
 								</div>
 							</div>
 						</div>
-						
-						
+
+
 					</td>
-					
+
 				</tr>
 				<%
 					}
 				%>
 			</table>
-			<button class="btn btn-primary" onclick="location.href='jsp/anadirArticulo.jsp'">>
-				<i class="fa fa-plus-square" aria-hidden="true"></i>
-				Añadir Articulo
+			<button class="btn btn-primary"
+				onclick="location.href='anadirArticulo.jsp'">
+				<i class="fa fa-plus-square" aria-hidden="true"></i> Añadir Articulo
 			</button>
-		</div>	
+		</div>
+			
+			</section>
+		
+
+
+
+
+
+
+
 		<%
-			} 
+			}
 		%>	
 	</div>						
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->

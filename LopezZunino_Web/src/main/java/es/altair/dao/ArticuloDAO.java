@@ -12,4 +12,5 @@ public interface ArticuloDAO {
 	void borrar(String codigo);
 	Articulo obtenerArticuloPorCodigo(String codigo);
 	void actualizar(String nombre, String descripcion, float precio, ByteArrayOutputStream os, String codigo);
+	void insertar(Articulo a);
 }

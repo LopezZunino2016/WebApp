@@ -18,10 +18,11 @@ public class SessionProvider {
 				.setProperty("hibernate.connection.driver.class", "com.mysql.jdbc.Driver")
 				.setProperty("hibernate.connection.url", "jdbc:mysql://localhost/bdtienda")
 				.setProperty("hibernate.connection.username", "root")
-				.setProperty("hibernate.connection.password", "root")
+				.setProperty("hibernate.connection.password", "my123$%sql")
 				.setProperty("hibernate.show_sql", "true")
 				.addAnnotatedClass(es.altair.bean.Usuario.class)
-				.addAnnotatedClass(es.altair.bean.Articulo.class);
+				.addAnnotatedClass(es.altair.bean.Articulo.class)
+				.addAnnotatedClass(es.altair.bean.Compra.class);
 	}
 	
 	public static Session getSession() {
