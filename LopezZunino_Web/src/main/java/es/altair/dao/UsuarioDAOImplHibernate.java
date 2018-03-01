@@ -1,5 +1,8 @@
 package es.altair.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -158,6 +161,47 @@ public class UsuarioDAOImplHibernate implements UsuarioDAO {
 
 
 
+			sesion.getTransaction().commit();
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally {
+			sesion.close();
+			// sf.close();
+		}
+		
+	}
+
+	public List<Usuario> lista() {
+		List<Usuario> usuarios = new ArrayList<Usuario>(); 
+		
+		Session sesion = SessionProvider.getSession();
+		try {
+			sesion.beginTransaction();
+
+			usuarios = sesion.createQuery("FROM Usuario u ")
+					.list(); 
+
+			sesion.getTransaction().commit();
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally {
+			sesion.close();
+			// sf.close();
+		}
+		
+		return usuarios;
+	}
+
+	public void borrar(int idUsuario) {
+		Session sesion = SessionProvider.getSession();
+		
+		try {
+			sesion.beginTransaction();
+			
+			sesion.createSQLQuery("DELETE FROM Usuarios WHERE idUsuarios=:clave")
+					.setParameter("clave", idUsuario)
+					.executeUpdate();
+			
 			sesion.getTransaction().commit();
 		} catch (Exception e) {
 			// TODO: handle exception

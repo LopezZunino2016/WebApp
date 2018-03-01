@@ -5,43 +5,48 @@
 <%@page import="java.util.List"%>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Principal Usuario</title>
-		<!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="../css/bootstrap.min.css">
-		
-		<!-- Stylesheets -->
-		<link rel="stylesheet" href="../fonts/font-awesome.min.css">
-		<link href="../css/estilo.css" rel="stylesheet" type="text/css" />
-		<link href="../css/Prueba.css" rel="stylesheet" type="text/css" />
-	
-	</head>
-	<body>
-		<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-			<a class="navbar-brand" href="index.jsp">Mi Web</a>
-				<button class="navbar-toggler" type="button" data-toggle="collapse"
-					data-target="#navbarExample" aria-controls="navbarExample"
-					aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Mis Compras</title>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-			<div class="collapse navbar-collapse" id="navbarExample">
-				<ul class="navbar-nav mr-auto">
-					<li class="nav-item active"><a class="nav-link"
-						href="/index.jsp">Inicio</a></li>
-					<li class="nav-item"><a class="nav-link" href="#articulos">Artículos</a></li>
-					<li class="nav-item"><a class="nav-link" href="#tablas">Tablas</a></li>
-					<li class="nav-item"><a class="nav-link" href="principalUsu.jsp">Volver
-						Sesión</a></li>
+
+<!-- Stylesheets -->
+<link rel="stylesheet" href="../fonts/font-awesome.min.css">
+
+<link href="../css/1-col-portfolio.css" rel="stylesheet">
+
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+			<div class="container">
+				<a class="navbar-brand" href="#">Zuni-Component</a>
+			</div>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarResponsive" aria-controls="navbarResponsive"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item active">
+						<a class="nav-link" href="#">Mis
+							Compras <span class="sr-only">(current)</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link"	href="principalUsu.jsp">Volver </a>
+					</li>
 				</ul>
 			</div>
 		</nav>
-	<br>
+	
 		<div class="container">
 
 		<% if(session.getAttribute("usuLogeado") == null || session.isNew())
@@ -54,33 +59,36 @@
 			List<Compra> listCompra = cDAO.listarPorUsu((Usuario)session.getAttribute("usuLogeado"));
 			
 		%>
+		
 		<br>
-		<br>
-		<br>
-		<section>
-			<div class="row col-md-6 col-md-offset-2" >
+		
+			<div class="row">
 				<table class="table table">
-					<h1>Mis Compras</h1>
+					<h1 class="my-4">Mis Compras</h1>
 					
 					<thead>
 						<tr>
+							<th>Foto</th>
 							<th>Fecha</th>
 							<th>Cantidad</th>
 							<th>Precio</th>
 							<th>Producto</th>
+							<th></th>
 						</tr>
 					</thead>
+					
 					<%
 						for (Compra c : listCompra){
 					%>
 						<tr>
+							<td><img alt="Portada"
+								src="image.jsp?imag=<%=c.getArticulo().getIdArticulos()%>"
+								class="img-thumbnail" width="150" height="150"></td>
+							
 							<td><%=c.getFecha()%></td>
 							<td><%=c.getCantidad() %></td>
 							<td><%=c.getPrecio() %></td>
 							<td><%=c.getArticulo().getNombre() %></td>
-							<td><img alt="Portada"
-								src="image.jsp?imag=<%=c.getArticulo().getIdArticulos()%>"
-								class="img-thumbnail" width="150" height="150"></td>
 							<td>
 							
 							<button type="button" class="btn btn-warning" data-toggle="modal"
@@ -124,17 +132,24 @@
 				</table>
 			</div>
 			
-		</section>
+		
 
 		<%
 		}
 		%>
 		</div>
-		
+		<footer class="py-5 bg-dark">
+	<div class="container">
+		<p class="m-0 text-center text-white">Copyright &copy; Jose Mª
+			Lopez Zunino2018</p>
+	</div>
+	 </footer>
 		<!-- Optional JavaScript -->
 		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script src="../vendor/jquery/jquery.min.js"></script>
+	<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 		<script src="../js/jquery-3.2.1.slim.min.js"></script>
 		<script src="../js/popper.min.js"></script>
 		<script src="../js/bootstrap.min.js"></script>
-	</body>
+</body>
 </html>

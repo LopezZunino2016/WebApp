@@ -6,19 +6,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import es.altair.dao.CompraDAO;
-import es.altair.dao.CompraDAOImplHibernate;
+import es.altair.dao.UsuarioDAO;
+import es.altair.dao.UsuarioDAOImplHibernate;
 
 /**
- * Servlet implementation class BorrarCompra
+ * Servlet implementation class BorrarUsuario
  */
-public class BorrarCompra extends HttpServlet {
+public class BorrarUsuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BorrarCompra() {
+    public BorrarUsuario() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,17 +27,13 @@ public class BorrarCompra extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("Entramos en comprar");
-		int idArticulo = Integer.parseInt(request.getParameter("id"));
-
-		CompraDAO cDAO = new CompraDAOImplHibernate();
-		System.out.println("Vamos a borrar");
-		cDAO.borrar(idArticulo); 
+		int idUsuario = Integer.parseInt(request.getParameter("id"));
 		
-		System.out.println("Volvemos a la pagina");
-		response.sendRedirect("jsp/misCompras.jsp");
+		UsuarioDAO uDAO = new UsuarioDAOImplHibernate(); 
 		
-		
+		uDAO.borrar(idUsuario); 
+		String msg = "Usuario Borrado Correctamente"; 
+		response.sendRedirect("jsp/principalAdmin.jsp#Usuario?mensaje="+ msg);
 	}
 
 	/**

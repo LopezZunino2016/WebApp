@@ -8,33 +8,37 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>Editar Articulos</title>
-			<!-- Bootstrap CSS -->
+		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="../css/bootstrap.min.css">
-	
-			<!-- Stylesheets -->
+		<link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- Stylesheets -->
 		<link rel="stylesheet" href="../fonts/font-awesome.min.css">
-		<link href="../css/estilo.css" rel="stylesheet" type="text/css"/>	
+		
+		<link href="../css/1-col-portfolio.css" rel="stylesheet">	
 	</head>
 	<body>
 	
-	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-		<a class="navbar-brand" href="principalAdmin.jsp">Inicio</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-			data-target="#navbarExample" aria-controls="navbarExample"
-			aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-
-		<div class="collapse navbar-collapse" id="navbarExample">
-			<ul class="navbar-nav mr-auto">
-				<li class="nav-item"><a class="nav-link" href="#articulos">Artículos</a></li>
-				<li class="nav-item"><a class="nav-link" href="#tablas">Tablas</a></li>
-				
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+		<div class="container">
+			<a class="navbar-brand" href="#">Zuni-Component</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarResponsive" aria-controls="navbarResponsive"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item active"><a class="nav-link" href="#">Editar Articulo
+							<span class="sr-only">(current)</span>
+					</a></li>
+					<li class="nav-item"><a class="nav-link" href="principalAdmin.jsp">Volver</a></li>
+				</ul>
+			</div>
 		</div>
 	</nav>
 	<br>
-	<br>
-	<br>
+	
 	<div class="container">
 		<%
 			if(session.getAttribute("usuLogeado") == null || session.isNew() )
@@ -87,6 +91,8 @@
 	
 			
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="../vendor/jquery/jquery.min.js"></script>
+	<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<script src="../js/jquery-3.2.1.slim.min.js"></script>
 	<script src="../js/popper.min.js"></script>
 	<script src="../js/bootstrap.min.js"></script>
